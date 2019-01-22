@@ -4,7 +4,6 @@
 # Here goes the imports
 import csv
 import matplotlib.pyplot as plt
-import statistics
 
 # Let's read the data as a list
 print("Reading the document...")
@@ -149,11 +148,12 @@ def most_popular_gender(data_list):
     Returns:
         String with a message telling which gender is more popular
     """
-    answer = "Female"
     male, female = count_gender(data_list)
+    if male == female:
+        return "Equal"
     if male > female:
-        answer = "Male"
-    return answer
+        return "Male"
+    return "Female"
 
 
 print("\nTASK 6: Which one is the most popular gender?")
@@ -238,11 +238,15 @@ input("Press Enter to continue...")
 # TASK 9
 # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # You should not use ready functions to do that, like max() or min().
-trip_duration_list = [int(x) for x in column_to_list(data_list, 2)]
-min_trip = min(trip_duration_list)
-max_trip = max(trip_duration_list)
-mean_trip = statistics.mean(trip_duration_list)
-median_trip = statistics.median(trip_duration_list)
+trip_duration_list = sorted([int(x) for x in column_to_list(data_list, 2) if x.isdecimal()], reverse=True)
+total = 0
+for value in trip_duration_list:
+    total += value
+
+min_trip = trip_duration_list[-1]
+max_trip = trip_duration_list[0]
+mean_trip = total/len(trip_duration_list)
+median_trip = trip_duration_list[int(len(trip_duration_list)/2)]
 
 
 print("\nTASK 9: Printing the min, max, mean and median")
@@ -272,16 +276,16 @@ assert len(user_types) == 582, "TASK 10: Wrong len of start stations."
 input("Press Enter to continue...")
 # TASK 11
 # Go back and make sure you documented your functions. Explain the input, output and what it do. Example:
-def new_function(param1: int, param2: str) -> list:
-      """
-      Example function with annotations.
-      Args:
-          param1: The first parameter.
-          param2: The second parameter.
-      Returns:
-          List of X values
-
-      """
+# def new_function(param1: int, param2: str) -> list:
+#       """
+#       Example function with annotations.
+#       Args:
+#           param1: The first parameter.
+#           param2: The second parameter.
+#       Returns:
+#           List of X values
+#
+#       """
 
 input("Press Enter to continue...")
 # TASK 12 - Challenge! (Optional)
