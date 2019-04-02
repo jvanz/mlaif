@@ -1,2 +1,7 @@
 chicago.csv
 *.log
+__pycache__
+*.pdf
+*.aux
+*.dvi
+.ipynb_checkpoints
