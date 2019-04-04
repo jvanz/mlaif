@@ -1,5 +1,6 @@
 \documentclass[]{article}
 \usepackage{tikz}
+\usepackage{graphicx}
 
 %opening
 \title{Machine Learning notes}
@@ -151,11 +152,59 @@ We split the data in K buckets and train the model K times. Each time using a di
 
 \begin{figure}[ht!]
 	\centering
-		\includegraphics[width=15cm]{image/learning_curves.png}
+		\includegraphics[width=10cm]{image/learning_curves.png}
 		\caption{Learning curves of underfitting, just right and overfitting models.}
 \end{figure}
+\pagebreak
 
 \subsection{Grid search}
 
 \paragraph{} Grid search is a hyper-parameter optimisation technique. Where a learning algorithm is trained with different parameters values and check their performance then choose the best one
+
+\section{Machine Learning algorithms}
+\subsection{Linear regression}
+
+\subsubsection{Gradient descent}
+
+\subsubsection{Mean absoulte error}
+
+\begin{figure}[h!]
+	\begin{center}
+		\begin{tikzpicture}
+		\draw [thick] (0,0) to (0,7); % Y
+		\draw [thick] (0,0) to (7,0); % X
+		\filldraw [cyan] (4,5) circle [radius=0.14] node[anchor=south, color=black] {$ (x,y) $};
+		\draw [thick] (-1,0.5) to (7,5);
+		\draw [thick] (4,4.9) to (4,3.3);
+		\draw (3.3,4.3) node {$(y-\hat{y})$}; 
+		\draw (4,3) node {$(x, \hat{y})$};	
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\[ Error = \frac{1}{m}\sum_{i=1}^{m}|y-\hat{y}| \]
+
+\pagebreak
+
+\subsubsection{Mean squared error}
+
+\begin{figure}[h!]
+	\begin{center}
+		\begin{tikzpicture}
+		\draw [thick] (0,0) to (0,7); % Y
+		\draw [thick] (0,0) to (7,0); % X
+		\draw [orange,fill] (4,5) rectangle (2,3.3);
+		\filldraw [cyan] (4,5) circle [radius=0.14] node[anchor=south, color=black] {$ (x,y) $};
+		\draw [thick] (-1,0.5) to (7,5);
+		\draw [thick] (4,4.9) to (4,3.3);
+		\draw (4.7,4.3) node {$(y-\hat{y})$}; 
+		\draw (3,4) node {$(y-\hat{y})^2$};
+		\draw (4.3,3) node {$(x, \hat{y})$};	
+
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\[ Error = \frac{1}{2m}\sum_{i=1}^{m}(y-\hat{y})^2 \]
+
 \end{document}
